@@ -1,0 +1,18 @@
+# Render (https://render.com) にバイクGO! をのせるときの設定ファイル。
+# GitHub にこのフォルダを上げて、Render で「New」→「Web Service」を作ると、
+# このファイルが自動で読み込まれます。
+# 秘密の値 (FIREBASE_SERVICE_ACCOUNT) はここには書かず、Render の画面で入れます。
+services:
+  - type: web
+    name: bike-go
+    runtime: node
+    plan: free
+    buildCommand: npm install
+    startCommand: node server.js
+    envVars:
+      - key: NODE_ENV
+        value: production
+      # 鍵は Render のダッシュボードで設定します:
+      # Environment → Add Environment Variable
+      # Key: FIREBASE_SERVICE_ACCOUNT
+      # Value: serviceAccountKey.json の中身を全部コピーして貼り付け
